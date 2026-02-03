@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  honeypot-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - API_SECRET_KEY=CHAMELEON_HONEYPOT_SECRET_2024
+      - GUVI_ENDPOINT=https://hackathon.guvi.in/api/updateHoneyPotFinalResult
+      - MAX_SESSION_DURATION=300
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
